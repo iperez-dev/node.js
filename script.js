@@ -28,7 +28,7 @@ Why do I need to create a web app or website using client-side and server-side l
 ---------------------------------------------------------------------
 *CREATE A HTTP & FS NODE SERVER - STEP BY STEP
 Install recommended version of Node.js (Just need to do it once)
-1 - npm init //  initialize a new Node.js project, creates a package.json (contains Project Metadata, lists all the project dependencies)
+1 - npm init //  initialize a new Node.js project, creates a package.json (contains Project Metadata, lists all the project dependencies and core NODE modules)
 2 - Create an index.html file
 3 - Create a server.js file
 4 - Write the code
@@ -116,20 +116,33 @@ server.listen(8000);
 8 - Open brower on localhost:8000
 9 - To kill the server Ctrl + C
 ---------------------------------------------------------------------
-*CRUD
-CRUD is not part of Node.js. It is a set of HTTP verbs that are used to create, read, update, and delete data. Node.js can be used to implement CRUD, but it is not required. There are other frameworks and libraries that can be used to implement CRUD, such as Express.js and Sequelize.
+*CRUD OPERATIONS
+CRUD is not part of Node.js. It is a set of HTTP verbs that are used to create, read, update, and delete data. Node.js can be used to implement CRUD, but it is not required. There are other frameworks and libraries that can be used to implement CRUD, such as Express.js and Sequelize. These 4 HTTP verbs made up the majority of operations performed by full-stack apps.
 
 Create -- Post (Make something)
 Read   -- Get (Get something)
 Update -- Put (Change something)
 Delete -- Delete (Remove something)
+
 ---------------------------------------------------------------------
 *EXPRESS
-Express is a web application framework for Node.js. It provides a number of features that make it easy to develop web applications, such as routing, middleware, and template engines.
+Express is a popular web application framework for Node.js. It's designed to build web applications and APIs with ease and efficiency. 
+- Minimalist and Flexible: Express is known for being minimal yet highly flexible. It provides a thin layer of fundamental web application features without obscuring Node.js features.
+- Middleware: Express uses middleware functions to process requests and responses. Middleware functions can execute any code, make changes to the request and response objects, end the request-response cycle, or call the next middleware in the stack.
+- Routing: It offers a robust routing system that allows you to define routes in your application based on HTTP methods and URLs. This makes it easy to build RESTful APIs.
+- Performance: Being a lightweight framework, it doesn't add much overhead, thus maintaining the high performance of Node.js.
+- Simplicity: Writing server-side code with Express is straightforward, making it a great choice for beginners and experienced developers alike.
+- Community and Ecosystem: Express has a large and active community. There's a wealth of resources available, such as middleware, tutorials, and support forums.
+- Integration: It integrates seamlessly with many other Node.js libraries and tools, like templating engines (e.g., Pug, EJS), database ORM tools (e.g., Mongoose for MongoDB), and more.
+- Error Handling: Express provides a centralized error handling mechanism, simplifying error management in your applications.
 
-*Setting up the Project
-npm init
-npm install express --save
+---------------------------------------------------------------------
+*CREATE A EXPRESS SERVER - STEP BY STEP
+1 - npm init
+2 - install express --save //install express and adds it into the package.json with the rest of dependencies and node modules
+3 - Create an index.html
+4 - Create a server.js
+5 - Write the code
 
 
 const express = require("express");
@@ -143,8 +156,6 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`The server is runnig on PORT ${PORT}`);
 });
-
-
 
 
 

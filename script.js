@@ -36,9 +36,24 @@ http
   })
   .listen(8000);
 
-  ---------------------------------------------------------------------
+---------------------------------------------------------------------
 *Node Basic Server & API
+CLIENT-SIDE JS
+document.querySelector('#clickMe').addEventListener('click', makeReq)
 
+async function makeReq(){
+
+  const userName = document.querySelector("#userName").value;
+  const res = await fetch(`/api?student=${userName}`)
+  const data = await res.json()
+
+  console.log(data);
+  document.querySelector("#personName").textContent = data.name
+  document.querySelector("#personStatus").textContent = data.status
+  document.querySelector("#personOccupation").textContent = data.currentOccupation
+}
+---------------------------------------------------------------------
+SERVER-SIDE NODE.JS
 const http = require("http"); //listen and responde to requests
 const fs = require("fs"); //look and grab the files
 const url = require("url"); //look at the url that comes as part of the request
@@ -118,7 +133,20 @@ const server = http.createServer((req, res) => {
 
 server.listen(8000);
 ---------------------------------------------------------------------
+*CRUD
+CRUD is not part of Node.js. It is a set of HTTP verbs that are used to create, read, update, and delete data. Node.js can be used to implement CRUD, but it is not required. There are other frameworks and libraries that can be used to implement CRUD, such as Express.js and Sequelize.
+
+Create -- Post (Make something)
+Read   -- Get (Get something)
+Update -- Put (Change something)
+Delete -- Delete (Remove something)
+---------------------------------------------------------------------
 *EXPRESS
+Express is a web application framework for Node.js. It provides a number of features that make it easy to develop web applications, such as routing, middleware, and template engines.
+
+*Setting up the Project
+npm init
+npm install express --save
 
 
 

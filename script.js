@@ -77,9 +77,12 @@ server.listen(PORT, (error) => {
 const http = require("http"); //listen and responde to requests
 const fs = require("fs"); //look and grab the files
 const url = require("url"); //look at the url that comes as part of the request
+const querystring = require("querystring"); //look at the querie parameters that are part of the request
+const figlet = require("figlet"); //turn any string into big letters
 
 const server = http.createServer((req, res) => {
   const page = url.parse(req.url).pathname;
+  const params = querystring.parse(url.parse(req.url).query);
   console.log(page);
   if (page == "/") {
     fs.readFile("index.html", function (err, data) {
@@ -87,18 +90,56 @@ const server = http.createServer((req, res) => {
       res.write(data);
       res.end();
     });
-  } else if (page == "/css/style.css") {
+  } else if (page == "/otherpage") {
+    fs.readFile("otherpage.html", function (err, data) {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(data);
+      res.end();
+    });
+  } else if (page == "/otherotherpage") {
+    fs.readFile("otherotherpage.html", function (err, data) {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(data);
+      res.end();
+    });
+  } else if (page == "/api") {
+    if ("student" in params) {
+      if (params["student"] == "leon") {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        const objToJson = {
+          name: "leon",
+          status: "Boss Man",
+          currentOccupation: "Baller",
+        };
+        res.end(JSON.stringify(objToJson));
+      } //student = leon
+      else if (params["student"] != "leon") {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        const objToJson = {
+          name: "unknown",
+          status: "unknown",
+          currentOccupation: "unknown",
+        };
+        res.end(JSON.stringify(objToJson));
+      } //student != leon
+    } //student if
+  } //else if
+  else if (page == "/css/style.css") {
+    //route for css
     fs.readFile("css/style.css", function (err, data) {
       res.write(data);
       res.end();
     });
   } else if (page == "/js/main.js") {
+    //route for js
     fs.readFile("js/main.js", function (err, data) {
       res.writeHead(200, { "Content-Type": "text/javascript" });
       res.write(data);
       res.end();
     });
-  } else ((err, data) => {
+  } else {
+    figlet("404!!", function (err, data) {
+      //404
       if (err) {
         console.log("Something went wrong...");
         console.dir(err);
@@ -107,6 +148,7 @@ const server = http.createServer((req, res) => {
       res.write(data);
       res.end();
     });
+  }
 });
 
 server.listen(8000);

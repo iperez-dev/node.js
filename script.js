@@ -189,7 +189,8 @@ Express is a popular web application framework for Node.js. It's designed to bui
 ---------------------------------------------------------------------
 *CREATE A EXPRESS SERVER - STEP BY STEP
 1 - npm init
-2 - install express --save //install express and adds it into the package.json with the rest of dependencies and node modules
+2 - npm install express --save //install express and adds it into the package.json with the rest of dependencies and node modules
+3 - npm install cors --save (allows a web page to make requests to a domain different from the one that served the web application.)
 3 - Create an index.html
 4 - Create a server.js
 5 - Write the code
@@ -197,6 +198,7 @@ Express is a popular web application framework for Node.js. It's designed to bui
 
 const express = require("express");
 const app = express();
+const cors = require('cors')
 const PORT = 8000;
 
 app.get("/", (req, res) => {

@@ -29,6 +29,10 @@ URL ANATOMY
 https://example.com:8000/blog?search=test&sort_by=created_at#header
    |          |      |     |                    |              |
 Protocol    Domain  Port  Path           Query Parameters   Fragment
+
+GIT IGNORE
+1 - touch .gitignore
+2 - node_modules (adds the node modules folder to the .gitignore file and do not push them to github)
 ---------------------------------------------------------------------
 *CREATE A HTTP & FS NODE SERVER - STEP BY STEP
 Install recommended version of Node.js (Just need to do it once)

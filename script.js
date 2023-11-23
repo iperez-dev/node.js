@@ -188,6 +188,24 @@ Express is a popular web application framework for Node.js. It's designed to bui
 
 ---------------------------------------------------------------------
 *CREATE A EXPRESS SERVER - STEP BY STEP
+
+/////////////////CLIENT-SIDE CODE
+document.querySelector("button").addEventListener("click", displayInfo);
+
+async function displayInfo() {
+  const countryNames = document.querySelector("input").value;
+  try {
+    const res = await fetch(
+      `https://express-template-server-api.up.railway.app/api/${countryNames}`
+    );
+    const data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/////////////////SERVER-SIDE CODE
 1 - npm init
 2 - npm install express --save //install express and adds it into the package.json with the rest of dependencies and node modules
 3 - npm install cors --save (allows a web page to make requests to a domain different from the one that served the web application.)
@@ -198,18 +216,55 @@ Express is a popular web application framework for Node.js. It's designed to bui
 
 const express = require("express");
 const app = express();
-const cors = require('cors')
-const PORT = 8000;
+const cors = require("cors");
+const path = require("path");
+const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+app.use(cors());
+
+app.use(express.static(path.join(__dirname, "public")));
+
+//JSON DATA
+const cityCapitals = {
+  japan: {
+    capital: "Tokyo",
+    population: "125.8 million",
+    established: "660 BC",
+    area: "377,975 square kilometers",
+  },
+  france: {
+    capital: "Paris",
+    population: "67.39 million",
+    established: "843 AD",
+    area: "643,801 square kilometers",
+  },
+  australia: {
+    capital: "Canberra",
+    population: "25.69 million",
+    established: "1901",
+    area: "7.692 million square kilometers",
+  },
+  canada: {
+    capital: "Ottawa",
+    population: "38.01 million",
+    established: "1867",
+    area: "9.985 million square kilometers",
+  },
+};
+
+//SERVER-LOGIC
+
+app.get("/api/:countryNames", (req, res) => {
+  const countries = req.params.countryNames.toLowerCase();
+  if (cityCapitals[countries]) {
+    res.json(cityCapitals[countries]);
+  } else {
+    res.json(`We will add ${countries} to our database soon`);
+  }
 });
 
 app.listen(PORT, () => {
-  console.log(`The server is runnig on PORT ${PORT}`);
+  console.log(`The server is running on PORT ${PORT}`);
 });
-
-
-
 
 */

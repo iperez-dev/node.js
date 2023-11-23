@@ -25,6 +25,10 @@ Why do I need to create a web app or website using client-side and server-side l
 5 - API Integration: The back-end can act as an intermediary for API calls to other services. This is important for hiding API keys and other sensitive information from the client-side, as well as for processing and filtering the data before sending it to the front-end.
 6 - Scalability: Back-end code helps in managing and scaling the application. For instance, if your website has high traffic, the server can be scaled up to handle the load, something that's not possible if all the code is on the front-end.
 
+URL ANATOMY
+https://example.com:8000/blog?search=test&sort_by=created_at#header
+   |          |      |     |                    |              |
+Protocol    Domain  Port  Path           Query Parameters   Fragment
 ---------------------------------------------------------------------
 *CREATE A HTTP & FS NODE SERVER - STEP BY STEP
 Install recommended version of Node.js (Just need to do it once)

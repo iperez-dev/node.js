@@ -209,12 +209,16 @@ async function displayInfo() {
 }
 
 /////////////////SERVER-SIDE CODE
-1 - npm init
+1 - npm init //  initialize a new Node.js project, creates a package.json (contains Project Metadata, lists all the project dependencies and core NODE modules. Include in the package.json the initiation script)
+"scripts": {
+  "start": "node your-main-app-file.js"
+}
 2 - npm install express --save //install express and adds it into the package.json with the rest of dependencies and node modules
-3 - npm install cors --save (allows a web page to make requests to a domain different from the one that served the web application.)
-3 - Create an index.html
-4 - Create a server.js
-5 - Write the code
+3 - create the .gitignore file ( files that will not be pushed to GitHub. Add node_module)
+4 - npm install cors --save (allows a web page to make requests to a domain different from the one that served the web application.)
+5 - Create an index.html
+6 - Create a server.js
+7 - Write the code
 
 
 const express = require("express");

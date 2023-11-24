@@ -36,7 +36,10 @@ GIT IGNORE
 ---------------------------------------------------------------------
 *CREATE A HTTP & FS NODE SERVER - STEP BY STEP
 Install recommended version of Node.js (Just need to do it once)
-1 - npm init //  initialize a new Node.js project, creates a package.json (contains Project Metadata, lists all the project dependencies and core NODE modules)
+1 - npm init //  initialize a new Node.js project, creates a package.json (contains Project Metadata, lists all the project dependencies and core NODE modules. Include in the package.json the initiation script)
+"scripts": {
+  "start": "node your-main-app-file.js"
+}
 2 - Create an index.html file
 3 - Create a server.js file
 4 - Write the code
